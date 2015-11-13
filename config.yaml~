@@ -5,7 +5,3 @@ libraries:
 handlers:
 - url: /foo
   static_dir: foo
-
-
-
-
