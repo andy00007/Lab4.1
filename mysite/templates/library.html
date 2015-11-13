@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>welcome to my library</title>
+    <style>
+        .container {
+           width: 980px;
+           margin: 0 auto;
+           position: relative;
+        }
+        #search {
+           width: 300px;
+           height: 30px;
+           float: right;
+        }
+        #btn {
+           width: 80px;
+           height: 35px;
+           float:right;
+        }
+        .book_display {
+           overflow: hidden;
+           margin-top: 100px;
+        }
+        .book {
+           width:240px;
+           height: 350px;
+           display: inline-block;
+        }
+        .book_bg {
+           width: 135px;
+           height: 200px;
+           background-color: #70DBDB;
+           font-size: 15px;
+           line-height: 25px;
+           text-align: center;
+           margin: 0 auto;
+           padding: 25px;
+           cursor: pointer;
+        }
+        .book_author {
+           font-size: 15px;
+           line-height: 25px;
+           height: 25px;
+           bottom: 20px;
+           text-align: center;
+           overflow: hidden;
+        }
+        nav {
+           width: 400px;
+           height: 40px;
+           float: right;
+           margin-right:250px;
+        }
+        nav li{
+           list-style-type: none;
+           display: inline-block;
+           margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+       <nav>
+       	   <ul>
+               <li><a href="/library/">首页</a></li>
+               <li><a href="/index/">我的书库</a></li>
+               <li><a href="/authors/">作者库</a></li>
+           </ul>
+       </nav>
+       <h2>小小图书馆，大大知识库</h2>
+       <form action="/search/" method="get">
+           <input type="submit" id="btn" value="search">
+           <input type="text" id="search" name="q">
+       </form>
+       <div class="book_display">
+	   {% for book  in book_list %}
+           <div class="book">
+               <div class="book_bg">
+                   <p class="book_title" id={{ book.isbn }}>{{ book.title }}</p>
+		   
+               </div>
+               <p class="book_author">{{ book.authorid.name }}</p>
+           </div>
+           {% endfor %}
+       </div>
+   </div>
+   <script>
+       var books = document.getElementsByClassName("book_title");
+       for(var i=0,len=books.length;i<len;i++){
+           books[i].addEventListener("click",function(){
+               newWindow = window.open("/book/"+this.id,"newWin","status=yes,width=350,height=350,left=400,top=300");
+           });
+       }
+
+   </script>
+</body>
+</html>

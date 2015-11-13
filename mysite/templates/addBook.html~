@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>更改图书信息</title>
+    <style>
+       .book {
+           width:450px;
+           margin:50px auto;
+           text-align: right;
+       }
+       .book input {
+           width: 350px;
+           height: 30px;
+           margin:10px 0;
+       }
+       .book select {
+           width:255px;
+           height:30px;
+           margin:10px 0;
+       }
+       nav {
+           width: 600px;
+           height: 40px;
+           float: right;
+        }
+       nav ul{
+           margin-right:150px;
+        }
+       nav li{
+           list-style-type: none;
+           display: inline-block;
+           margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+   <nav>
+       <ul>
+           <li><a href="/library/">首页</a></li>
+           <li><a href="/index/">我的书库</a></li>
+           <li><a href="/authors/">作者库</a></li>
+       </ul>
+    </nav> 
+    <h2>添加一本书</h2>
+    <form action="/addaBook/" method="get" class="book">
+	<p>书名：<input type="text" name="t"></p>
+        <p>作者：<select name="a">
+           {% for author in author_list %}
+           <option>{{author.name}}</option>
+           {% endfor %}
+        </select>
+        <input type="button" value="add a author" class="addAuthor" style="width:95px" id={{ book.isbn }}>
+        </p>
+        <p>索引号：<input type="text" name="i"></p>
+        <p>出版社：<input type="text" name="p"></p>
+        <p>出版日期：<input type="text" name="d"></p>
+        <p>价格：￥<input type="text" name="v"></p>
+        <input type="submit" value="提交更改">
+    </form>
+    <script>
+        var addAuthor = document.getElementsByClassName("addAuthor")[0];
+        addAuthor.addEventListener("click",function(){
+            newWindow = window.open("/addAuthor/","添加作者到作者库","status=yes,width=450,height=500,left=400,top=200");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>更改图书信息</title>
+    <style>
+       .author {
+           width:350px;
+           margin:50px auto;
+           text-align: right;
+       }
+       .author input {
+           width: 250px;
+           height: 30px;
+           margin:10px 0;
+       }
+    </style>
+</head>
+<body>
+    <h2>添加一个作者</h2>
+    <form action="/addTodb/" method="get" class="author">
+        <p>AuthorID：<input type="text" name="i"></p>
+        <p>姓名：<input type="text" name="n"></p>
+        <p>年龄：<input type="text" name="a"></p>
+        <p>国籍：<input type="text" name="c"></p>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>
